@@ -138,6 +138,9 @@ func (p *projectRequestLimitValidator) Validate(request *admissionv1.AdmissionRe
 }
 
 func (p *projectRequestLimitValidator) isApplicable(request *admissionv1.AdmissionRequest) bool {
+	if request == nil {
+		return false
+	}
 	if request.Operation != admissionv1.Create {
 		return false
 	}
